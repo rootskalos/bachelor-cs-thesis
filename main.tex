@@ -1,0 +1,94 @@
+%% --------------------------------------------------------------------
+%% Template UTEC Tesis
+%% --------------------------------------------------------------------
+% Este es el archivo que se debe compilar.
+% 
+% Este template ha sido modificado y actualizado por Eduardo Castro y Roosevelt Ubaldo en base a lo trabajado por Víctor Murray, Oscar Ramos y Juan Carlos Barbaran.
+%
+% Última actualización: Mayo, 2022
+
+\documentclass[a4paper,12pt,oneside]{tesisutec}
+\usepackage{longtable}
+\selectlanguage{spanish}
+
+%% Paquetes
+\usepackage[utf8]{inputenc}
+\usepackage[square, numbers, comma, sort&compress]{natbib}
+% Libreria de idioma
+\usepackage[spanish]{babel}
+% Libreria para posicionamiento
+\usepackage{float}
+% Librerias para insertar codigos
+\usepackage[spanish,onelanguage,ruled,vlined]{algorithm2e}
+\usepackage{verbatim} 
+% Librería para hipervínculos
+\usepackage{hyperref}
+ % Librería necesaria para arreglar el orden de referencias en overleaf.com
+\usepackage{notoccite}
+
+% Incluir acá los paquetes adicionales que deseas. 
+% Ubicación de los imágenes.
+\graphicspath{images/}
+
+\makeatletter
+% Reinsert missing \algbackskip
+\def\algbackskip{\hskip-\ALG@thistlm}
+\makeatother
+
+\hypersetup{urlcolor=blue, colorlinks=true}
+
+\begin{document}
+
+\frontmatter
+
+\department{CIENCIA DE LA COMPUTACIÓN}
+\degree{Bachiller en Ciencia de la Computación}
+\title{Mitigación de la resistencia evolutiva en glioblastoma multiforme mediante aprendizaje por refuerzo multiagente adversarial: optimización de políticas de terapia adaptativa bajo un marco MAPPO-CTDE con simulación calibrada}
+\author{Kalos Brayan Lazo Mera \orcid{0000-0000-0000-0000} \\ Gianpier André Segovia Ureta \orcid{0000-0000-0000-0000}}
+\supervisor{Victor Eduardo Martinez Abaunza \orcid{0000-0000-0000-0000}}
+\date{2026}
+
+\maketitle
+
+\setstretch{1.5}
+
+
+\input{encabezados/dedicatoria}
+\input{encabezados/agradecimientos}
+
+\tableofcontents
+
+\newpage
+
+\listoftables
+
+\newpage
+
+\listoffigures
+
+\addtocontents{toc}{\vspace{1.5em}}
+
+%% ============================================================================
+\mainmatter
+\pagestyle{fancy}
+
+\input{secciones/resumen}
+\input{secciones/abstract} 
+\input{secciones/introduccion}
+\input{secciones/capitulo1}
+\input{secciones/capitulo2}
+\input{secciones/capitulo3}
+\input{secciones/capitulo4}
+\input{secciones/conclusiones}
+\input{secciones/recomendaciones} % sección opcional
+
+%% ============================================================================
+\renewcommand{\bibname}{\hfill\Large\bf{REFERENCIAS BIBLIOGRÁFICAS}\hfill}
+
+\bibliographystyle{IEEEtran} % Estableciendo el estilo de citas IEEEtram.
+
+\bibliography{referencias} % Recibe las referencias de IEEE
+
+\input{secciones/anexos}
+
+\end{document}

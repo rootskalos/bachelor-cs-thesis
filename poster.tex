@@ -1,0 +1,317 @@
+% =====================================================================
+%  POSTER A0 (vertical)  -  PFC I  -  UTEC
+%  Tema NARANJA · sin logos · tipografía Avenir Next
+%  Compilar con XeLaTeX / Tectonic:   tectonic poster.tex
+% =====================================================================
+\documentclass[final]{beamer}
+\usepackage[size=a0, scale=1.0, orientation=portrait]{beamerposter}
+
+% --- Idioma ---------------------------------------------------------
+\usepackage{polyglossia}
+\setdefaultlanguage{spanish}
+\setotherlanguage{english}
+
+% --- Tipografía (Avenir Next → Helvetica Neue → fallback) -----------
+\usepackage{fontspec}
+\IfFontExistsTF{Avenir Next}{%
+  \setsansfont{Avenir Next}[UprightFont=* Regular, BoldFont=* Bold,
+    ItalicFont=* Italic, BoldItalicFont=* Bold Italic]%
+}{%
+  \IfFontExistsTF{Helvetica Neue}{\setsansfont{Helvetica Neue}}{}%
+}
+\IfFontExistsTF{Avenir Next Heavy}{%
+  \newcommand{\titlefont}{\fontspec{Avenir Next Heavy}}%
+}{%
+  \IfFontExistsTF{Avenir Next Black}{\newcommand{\titlefont}{\fontspec{Avenir Next Black}}}{\newcommand{\titlefont}{\bfseries}}%
+}
+\renewcommand{\familydefault}{\sfdefault}
+
+% --- Gráficos y layout ---------------------------------------------
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, calc, shapes.geometric, fit, backgrounds}
+\usepackage[most]{tcolorbox}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{ragged2e}
+\usepackage{amsmath, amssymb}
+
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\color{uorange}\textbf{\textbullet}}
+\setbeamertemplate{itemize subitem}{\color{uorange2}\(\circ\)}
+\setbeamercolor{itemize item}{fg=uorange}
+\setbeamercolor{normal text}{fg=ink}
+\setbeamercolor{structure}{fg=uorange}
+
+% --- Paleta UTEC (teal institucional, extraída del logo #107688) ----
+\definecolor{uorange}{HTML}{107688}   % primario: teal UTEC
+\definecolor{uorange2}{HTML}{1A93A6}  % teal medio/brillante (realces)
+\definecolor{udark}{HTML}{074A55}     % teal profundo (header / títulos)
+\definecolor{utan}{HTML}{E8F4F6}      % tinte claro teal (paneles)
+\definecolor{uborder}{HTML}{BFDCE1}   % borde teal sutil
+\definecolor{ink}{HTML}{1B2A30}       % texto
+\definecolor{muted}{HTML}{5C6B73}     % texto secundario
+\definecolor{upos}{HTML}{2E7D5B}      % positivo
+\definecolor{uneg}{HTML}{B23A2E}      % negativo / MTD
+
+\graphicspath{{images/}}
+
+% --- Badge numerado para los títulos de sección ---------------------
+\newcommand{\badge}[1]{\tikz[baseline=-0.7ex]\node[circle, fill=white,
+  text=uorange, font=\LARGE\bfseries\sffamily, inner sep=0pt,
+  minimum size=13mm]{#1};}
+
+% --- Caja de bloque estándar (con badge) ----------------------------
+\newtcolorbox{pblock}[2]{%
+  enhanced, breakable,
+  colback=white, colframe=uborder,
+  colbacktitle=uorange, coltitle=white,
+  fonttitle=\LARGE\bfseries\sffamily,
+  title={\badge{#1}\hspace{3mm}#2},
+  titlerule=0.6mm, titlerule style={udark},
+  boxrule=0.3mm, arc=3mm,
+  left=8mm, right=8mm, top=6mm, bottom=6mm,
+  toptitle=3mm, bottomtitle=3mm,
+  fontupper=\normalsize\sffamily,
+  drop fuzzy shadow=black!12,
+}
+
+% --- Caja "destacado" para resultados clave -------------------------
+\newtcolorbox{hlbox}{%
+  enhanced,
+  colback=uorange!12, colframe=uorange,
+  boxrule=0.4mm, arc=2mm,
+  left=6mm, right=6mm, top=3mm, bottom=3mm,
+  fontupper=\large\sffamily\bfseries,
+}
+
+% --- Caja secundaria (pregunta, etc.) -------------------------------
+\newtcolorbox{softbox}{%
+  enhanced, colback=uorange!7, colframe=uorange,
+  boxrule=0.3mm, arc=2mm,
+  left=5mm, right=5mm, top=3mm, bottom=3mm,
+  fontupper=\normalsize\sffamily,
+}
+
+% --- Items compactos ------------------------------------------------
+\newcommand{\bitem}{\textcolor{uorange}{\textbullet}\,}
+
+% --- Figura enmarcada (marco teal fuerte para que destaque) ----------
+\newcommand{\pfig}[3][0.99\linewidth]{%
+  \begin{tcolorbox}[enhanced, colback=utan, colframe=uorange, boxrule=0.4mm,
+     arc=2.5mm, left=4mm, right=4mm, top=4mm, bottom=3mm,
+     drop fuzzy shadow=black!14, borderline north={2.2mm}{0mm}{uorange2}]
+    \centering\includegraphics[width=#1]{#2}\\[2mm]
+    {\small\color{udark}\sffamily #3}
+  \end{tcolorbox}}
+
+% =====================================================================
+\begin{document}
+\begin{frame}[t]
+% --------------------------- ENCABEZADO ------------------------------
+% Banda naranja con degradado, SIN logo, texto blanco.
+\begin{tcolorbox}[enhanced, boxrule=0mm, arc=0mm,
+  colback=uorange, colframe=uorange,
+  borderline south={5mm}{0mm}{udark},
+  left=12mm, right=12mm, top=9mm, bottom=9mm,
+  drop fuzzy shadow=black!30]
+\centering
+{\titlefont\color{white}\veryHuge Mitigación de la resistencia evolutiva en glioblastoma\\[1mm]
+ mediante aprendizaje por refuerzo multiagente adversarial}\\[8mm]
+{\large\color{white!95} Kalos B.\ Lazo Mera \quad\textbullet\quad Gianpier A.\ Segovia Ureta \quad\textbullet\quad Asesor: V.\ E.\ Martínez Abaunza}\\[2mm]
+{\color{white!85} Universidad de Ingeniería y Tecnología (UTEC) \,\(\cdot\)\, Ciencia de la Computación \,\(\cdot\)\, PFC I \,\(\cdot\)\, 2026}
+\end{tcolorbox}
+
+\vspace{5mm}
+
+% ============================ CUERPO =================================
+\begin{columns}[t]
+
+% --------------------- COLUMNA IZQUIERDA ----------------------------
+\begin{column}{0.485\textwidth}
+
+% --- 1. PROBLEMA ---
+\begin{pblock}{1}{Problema y contexto clínico}
+\textbf{\color{udark}Glioblastoma multiforme (GBM):} tumor cerebral primario maligno más frecuente y agresivo en adultos.
+\begin{itemize}\itemsep2pt
+  \item Mediana de supervivencia \textbf{12--15 meses}; supervivencia a 5 años \textbf{$<$7\,\%}.
+  \item Estándar (protocolo de Stupp): cirugía + radioterapia + \textbf{temozolomida} (TMZ). Casi todos los pacientes recaen con \emph{resistencia a la TMZ}.
+\end{itemize}
+
+\textbf{\color{udark}La recaída no es accidental, es evolutiva.} La dosis máxima tolerada (MTD) ejerce una presión selectiva que \textbf{expande los subclones resistentes}: al eliminar las células sensibles, libera a las resistentes de la competencia.
+
+\vspace{2mm}
+\textbf{\color{uneg}$\blacktriangle$\ Brecha que aborda este trabajo}
+\begin{itemize}\itemsep2pt
+  \item \textbf{RL de agente único:} trata al tumor como una dinámica \emph{fija}; no anticipa ni responde estratégicamente.
+  \item \textbf{Heurísticas adaptativas (Gatenby):} reglas fijas encendido/apagado, \emph{no optimizadas}.
+  \item \textbf{Modelos teórico-de-juegos:} resuelven al tumor analíticamente $\Rightarrow$ pobreza de comportamientos adversariales.
+  \item \textbf{Métricas de carga aislada:} premian la reducción agresiva del tumor $\Rightarrow$ \emph{inducen} resistencia (engañosas).
+\end{itemize}
+
+\vspace{2mm}
+\begin{softbox}
+\textbf{\color{udark}Pregunta de investigación.} ¿Modelar el GBM como un \emph{juego adversarial de dos agentes} (terapia \emph{vs.}\ tumor), resuelto por MARL sobre un simulador calibrado con datos reales, permite descubrir políticas de dosificación que \textbf{retrasen la dominancia resistente} frente a MTD y a la heurística de Gatenby? ¿Aporta el crítico centralizado (CTDE) sobre el aprendizaje independiente (IPPO)?
+\end{softbox}
+\end{pblock}
+
+\vspace{22mm}
+
+% --- 2. OBJETIVOS ---
+\begin{pblock}{2}{Objetivos}
+\textbf{\color{udark}General.} Diseñar \textbf{GBMARL}, un marco de aprendizaje por refuerzo multiagente adversarial que modele la terapia y la resistencia del glioblastoma como agentes en competencia sobre un simulador calibrado con datos reales, y evaluar su capacidad de \textbf{retrasar la intratabilidad} frente a líneas base clínicas.
+
+\vspace{2mm}
+\textbf{\color{udark}Específicos.}
+\begin{enumerate}\itemsep1pt
+  \item Construir y calibrar un \textbf{simulador de EDO} (competencia Lotka--Volterra + farmacodinámica tipo Hill) con datos reales (GDSC2 \& DepMap).
+  \item Formular el \textbf{entorno multiagente} con observabilidad parcial clínica e implementar \textbf{MAPPO-CTDE} y su ablación \textbf{IPPO}.
+  \item Entrenar y validar con \textbf{múltiples semillas}, reportando significancia estadística e \textbf{interpretando el mecanismo} de la política.
+  \item Aislar la contribución de CTDE (\textbf{ablación}) y evaluar la \textbf{sensibilidad} a las constantes de calibración.
+\end{enumerate}
+\end{pblock}
+
+\vspace{22mm}
+
+% --- 3. METODOLOGIA ---
+\begin{pblock}{3}{Metodología --- el marco GBMARL}
+\textbf{\color{udark}Juego adversarial de suma no nula.} Dos agentes en \emph{self-play} sobre un simulador de EDO:
+\begin{itemize}\itemsep1pt
+  \item \textbf{Agente de terapia} elige la dosis $u(t)\in[0,u_{\max}]$ $\to$ maximizar los días con tumor manejable.
+  \item \textbf{Agente tumoral} elige la transición fenotípica $\phi\in[0,\phi_{\max}]$ $\to$ forzar la dominancia resistente.
+\end{itemize}
+
+\textbf{\color{udark}Simulador calibrado} (Runge--Kutta 4):
+\[
+\small
+\begin{aligned}
+\tfrac{dS}{dt} &= \alpha_S S\!\left(1-\tfrac{S+R}{K}\right)-\delta_S(c)S-\phi S\\
+\tfrac{dR}{dt} &= \alpha_R R\!\left(1-\tfrac{S+R}{K}\right)-\delta_R(c)R+\phi S\\
+\tfrac{dc}{dt} &= -\lambda_c c+u(t),\qquad \delta_X(c)=\delta_X^{\max}\tfrac{c^{h}}{\mathrm{IC50}_X^{h}+c^{h}}
+\end{aligned}
+\]
+\bitem \textbf{Calibración:} datos GDSC2+DepMap fijan la \emph{potencia} del fármaco; la literatura ancla el techo de muerte. $\mathrm{IC50}_S{=}0.36$, $\mathrm{IC50}_R{=}3.27$ $\Rightarrow$ \textbf{brecha $\approx 9\times$} (34 líneas recuperadas).
+
+\bitem \textbf{Observabilidad parcial clínica:} la terapia observa $(S{+}R,\,c)$ pero \textbf{no} la fracción resistente $\Rightarrow$ justifica un \textbf{crítico centralizado} $V(s^{\text{global}})$.
+
+\bitem \textbf{MAPPO-CTDE:} actor local + crítico con estado conjunto; ventajas GAE; \emph{self-play} adversarial.
+
+\bitem \textbf{Métrica honesta (TTP-combinado):} días hasta fallar \emph{control} de carga \textbf{o} \emph{tratable} (mayoría resistente), reportando el \textbf{modo de falla}.
+
+\vspace{2mm}
+\pfig[0.78\linewidth]{images/dynamics_baseline.png}{Dinámica de referencia del simulador calibrado: poblaciones sensible y resistente bajo distintos regímenes de dosis.}
+
+\pfig{images/pipeline_diagram.png}{Pipeline reproducible: cada fase \emph{de-riskea} la siguiente --- los datos calibran, el simulador se prueba, PPO confirma que el entorno es aprendible antes de añadir el adversario.}
+\end{pblock}
+
+\end{column}
+
+% --------------------- COLUMNA DERECHA ------------------------------
+\begin{column}{0.485\textwidth}
+
+% --- 4. RESULTADOS ---
+\begin{pblock}{4}{Resultados preliminares}
+\textbf{\color{udark}Comparación bajo la métrica TTP-combinado} (tiempo hasta la intratabilidad):
+\vspace{1mm}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\rowcolor{uorange}{\color{white}\textbf{Estrategia}} & {\color{white}\textbf{TTP (días)}} & {\color{white}\textbf{Modo de falla}}\\
+\midrule
+Sin tratamiento        & 12 & carga progresó\\
+MTD (dosis máx.)       & 13 & resistencia mayoría\\
+Gatenby (adaptativa)   & 27 & resistencia mayoría\\
+\rowcolor{uorange!22}\textbf{MAPPO (aprendida)} & \textbf{33{,}5 $\pm$ 5{,}8}\;\,(mejor 41) & resistencia mayoría\\
+\bottomrule
+\end{tabular}
+\end{center}
+{\small Validación multi-semilla ($n{=}15$): \textbf{$p<0{,}001$} vs.\ MTD y vs.\ Gatenby. Corrida completa reproducible (120\,000 pasos, $n{=}5$): MAPPO supera a Gatenby en \textbf{5/5} semillas.}
+
+\vspace{2mm}
+\begin{hlbox}
+\centering La política aprendida \textbf{retrasa la intratabilidad} $\sim$2{,}6$\times$ frente a MTD y $+$24\,\% (media) / $+$52\,\% (mejor corrida) sobre Gatenby.
+\end{hlbox}
+
+\vspace{2mm}
+\pfig{images/evaluation_ttp.png}{\textbf{Izq.:} carga tumoral. \textbf{Der.:} fracción resistente. La MTD controla la carga pero lleva la resistencia al 100\,\%; la política aprendida la retrasa.}
+\end{pblock}
+
+\vspace{20mm}
+
+% --- 5. MECANISMO + ABLACION ---
+\begin{pblock}{5}{Mecanismo descubierto y ablación CTDE}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.5\textwidth}
+\textbf{\color{udark}Dosificación \emph{pulsada}.}\\[1mm]
+El agente \textbf{redescubre sin ser programado} el principio de la terapia adaptativa: dosis \textbf{intermitente} que preserva una población \textbf{sensible competidora}, frenando la expansión de la resistente.
+\pfig[0.99\linewidth]{images/policy_seed0.png}{Poblaciones, fracción resistente y acción de dosis: dosificación pulsada.}
+\end{column}
+\begin{column}{0.5\textwidth}
+\textbf{\color{udark}Ablación CTDE vs.\ IPPO.}\\[1mm]
+\small
+\begin{tabular}{@{}lc@{}}
+MAPPO (CTDE) & $34{,}8\pm5{,}7$ d\\
+IPPO (local) & $30{,}2\pm2{,}9$ d\\
+\end{tabular}\\[1mm]
+MAPPO falla por \emph{resistencia mayoría}; IPPO por \emph{carga} $\Rightarrow$ CTDE sostiene el control más tiempo. Ventaja \textbf{modesta}, caracterizada con honestidad.
+\pfig[0.92\linewidth]{images/ablation_ctde.png}{Ablación CTDE: MAPPO (crítico centralizado) vs.\ IPPO (local).}
+\end{column}
+\end{columns}
+\vspace{1mm}
+{\small\color{udark}\textbf{Sensibilidad:} al variar $\pm$30\,\% las 6 constantes clave, el orden \textbf{MAPPO $>$ Gatenby $>$ MTD} \emph{nunca} se invierte.}
+\end{pblock}
+
+\vspace{20mm}
+
+% --- 6. CONTRIBUCION + ALCANCE ---
+\begin{pblock}{6}{Contribución, alcance y limitaciones}
+\textbf{\color{udark}Contribuciones:} (1) primer marco MARL adversarial \textbf{calibrado} para GBM; (2) política interpretable (pulsada) que retrasa la resistencia de forma significativa; (3) métrica de evaluación clínicamente honesta; (4) ablación CTDE vs.\ IPPO en oncología.
+
+\vspace{1mm}
+\textbf{\color{uneg}Limitaciones (declaradas con honestidad):}
+\begin{itemize}\itemsep1pt
+  \item Validación \emph{in silico} sobre simulador calibrado \emph{in vitro} (no clínica). GBM + TMZ, modelo \textbf{no espacial} de 2 poblaciones.
+  \item Objetivo: \textbf{retrasar} la intratabilidad, \emph{no curar} (la resistencia es inevitable bajo calibración realista).
+  \item El \emph{self-play} produce resultados \textbf{bimodales} $\Rightarrow$ se reporta por \textbf{tasa de éxito}, no por promedios engañosos.
+\end{itemize}
+\end{pblock}
+
+\vspace{20mm}
+
+% --- 7. PLAN DE TRABAJO PFC II (timeline) ---
+\begin{pblock}{7}{Plan de trabajo para PFC II}
+\centering
+\begin{tikzpicture}[
+  every node/.style={font=\sffamily},
+  dot/.style={circle, fill=uorange, text=white, font=\Large\bfseries\sffamily,
+              minimum size=15mm, inner sep=0pt},
+  card/.style={anchor=west, text width=0.78\linewidth, align=left, inner sep=1.5mm}]
+\draw[uorange, line width=1.4mm, line cap=round] (0,0.7) -- (0,-9.7);
+\node[dot] at (0,0) {1};
+\node[card] at (1.4,0) {\textbf{\color{udark}Adversario evolutivo más fuerte}\\[0.5mm]\small Ampliar el espacio de acción del tumor ($\phi_{\max}$): amenaza realista y menos bimodalidad.};
+\node[dot] at (0,-3) {2};
+\node[card] at (1.4,-3) {\textbf{\color{udark}Calibración con datos clínicos}\\[0.5mm]\small Anclar parámetros a imágenes y series temporales de pacientes, no solo a ensayos \emph{in vitro}.};
+\node[dot] at (0,-6) {3};
+\node[card] at (1.4,-6) {\textbf{\color{udark}Tratamientos combinados y espacialidad}\\[0.5mm]\small Multi-fármaco (TMZ + agentes) y modelos espaciales de tumoresfera.};
+\node[dot] at (0,-9) {4};
+\node[card] at (1.4,-9) {\textbf{\color{udark}Traslado a otras histologías y cómputo}\\[0.5mm]\small Extender el marco a otros tumores con resistencia evolutiva; acelerar en GPU/vectorización.};
+\end{tikzpicture}
+\end{pblock}
+
+\end{column}
+\end{columns}
+
+% --------------------------- PIE -------------------------------------
+\vspace{4mm}
+\begin{tcolorbox}[enhanced, colback=utan, colframe=uborder, boxrule=0.3mm, arc=1.5mm,
+  left=6mm, right=6mm, top=2mm, bottom=2mm]
+{\small\color{ink}
+\textbf{\color{udark}Referencias clave:} Stupp (2005); Gatenby \& Gallaher (2017); Stankova (2019); Pinto et al.\ RARL (2017); Gallagher (2024); Yu et al.\ MAPPO (2022); de Witt et al.\ IPPO (2020); GDSC2; DepMap.\hfill
+\textbf{\color{udark}GitHub:} GBMARL \quad \textbf{\color{udark}Correo:} klazo / gsegovia @utec.edu.pe}
+\end{tcolorbox}
+
+\end{frame}
+\end{document}

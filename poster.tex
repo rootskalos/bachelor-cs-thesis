@@ -120,8 +120,9 @@
   left=12mm, right=12mm, top=9mm, bottom=9mm,
   drop fuzzy shadow=black!30]
 \centering
-{\titlefont\color{white}\veryHuge Mitigación de la resistencia evolutiva en glioblastoma\\[1mm]
- mediante aprendizaje por refuerzo multiagente adversarial}\\[8mm]
+{\bfseries\color{white}\huge Mitigación de la resistencia evolutiva en glioblastoma\\[1mm]
+ mediante aprendizaje por refuerzo multiagente adversarial}\\[6mm]
+{\large\color{white!92} Marco \textbf{GBMARL}: terapia y tumor co-evolucionan por \emph{self-play} MAPPO-CTDE sobre un simulador calibrado con datos reales}\\[7mm]
 {\large\color{white!95} Kalos B.\ Lazo Mera \quad\textbullet\quad Gianpier A.\ Segovia Ureta \quad\textbullet\quad Asesor: V.\ E.\ Martínez Abaunza}\\[2mm]
 {\color{white!85} Universidad de Ingeniería y Tecnología (UTEC) \,\(\cdot\)\, Ciencia de la Computación \,\(\cdot\)\, PFC I \,\(\cdot\)\, 2026}
 \end{tcolorbox}
@@ -159,7 +160,7 @@
 \end{softbox}
 \end{pblock}
 
-\vspace{22mm}
+\vspace{15mm}
 
 % --- 2. OBJETIVOS ---
 \begin{pblock}{2}{Objetivos}
@@ -175,7 +176,7 @@
 \end{enumerate}
 \end{pblock}
 
-\vspace{22mm}
+\vspace{15mm}
 
 % --- 3. METODOLOGIA ---
 \begin{pblock}{3}{Metodología --- el marco GBMARL}
@@ -203,8 +204,6 @@
 \bitem \textbf{Métrica honesta (TTP-combinado):} días hasta fallar \emph{control} de carga \textbf{o} \emph{tratable} (mayoría resistente), reportando el \textbf{modo de falla}.
 
 \vspace{2mm}
-\pfig[0.78\linewidth]{images/dynamics_baseline.png}{Dinámica de referencia del simulador calibrado: poblaciones sensible y resistente bajo distintos regímenes de dosis.}
-
 \pfig{images/pipeline_diagram.png}{Pipeline reproducible: cada fase \emph{de-riskea} la siguiente --- los datos calibran, el simulador se prueba, PPO confirma que el entorno es aprendible antes de añadir el adversario.}
 \end{pblock}
 
@@ -241,7 +240,7 @@ Gatenby (adaptativa)   & 27 & resistencia mayoría\\
 \pfig{images/evaluation_ttp.png}{\textbf{Izq.:} carga tumoral. \textbf{Der.:} fracción resistente. La MTD controla la carga pero lleva la resistencia al 100\,\%; la política aprendida la retrasa.}
 \end{pblock}
 
-\vspace{20mm}
+\vspace{13mm}
 
 % --- 5. MECANISMO + ABLACION ---
 \begin{pblock}{5}{Mecanismo descubierto y ablación CTDE}
@@ -266,7 +265,7 @@ MAPPO falla por \emph{resistencia mayoría}; IPPO por \emph{carga} $\Rightarrow$
 {\small\color{udark}\textbf{Sensibilidad:} al variar $\pm$30\,\% las 6 constantes clave, el orden \textbf{MAPPO $>$ Gatenby $>$ MTD} \emph{nunca} se invierte.}
 \end{pblock}
 
-\vspace{20mm}
+\vspace{13mm}
 
 % --- 6. CONTRIBUCION + ALCANCE ---
 \begin{pblock}{6}{Contribución, alcance y limitaciones}
@@ -281,7 +280,7 @@ MAPPO falla por \emph{resistencia mayoría}; IPPO por \emph{carga} $\Rightarrow$
 \end{itemize}
 \end{pblock}
 
-\vspace{20mm}
+\vspace{13mm}
 
 % --- 7. PLAN DE TRABAJO PFC II (timeline) ---
 \begin{pblock}{7}{Plan de trabajo para PFC II}

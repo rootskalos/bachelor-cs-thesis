@@ -24,6 +24,8 @@
 }{%
   \IfFontExistsTF{Avenir Next Black}{\newcommand{\titlefont}{\fontspec{Avenir Next Black}}}{\newcommand{\titlefont}{\bfseries}}%
 }
+% Fuente para títulos de sección (Futura: distinta del cuerpo y más ligera)
+\IfFontExistsTF{Futura}{\newcommand{\sectfont}{\fontspec{Futura}}}{\newcommand{\sectfont}{\sffamily}}
 \renewcommand{\familydefault}{\sfdefault}
 
 % --- Gráficos y layout ---------------------------------------------
@@ -60,15 +62,15 @@
 
 % --- Badge numerado para los títulos de sección ---------------------
 \newcommand{\badge}[1]{\tikz[baseline=-0.7ex]\node[circle, fill=white,
-  text=uorange, font=\LARGE\bfseries\sffamily, inner sep=0pt,
-  minimum size=13mm]{#1};}
+  text=uorange, font=\normalsize\bfseries\sectfont, inner sep=0pt,
+  minimum size=11mm]{#1};}
 
 % --- Caja de bloque estándar (con badge) ----------------------------
 \newtcolorbox{pblock}[2]{%
   enhanced, breakable,
   colback=white, colframe=uborder,
   colbacktitle=uorange, coltitle=white,
-  fonttitle=\LARGE\bfseries\sffamily,
+  fonttitle=\Large\sectfont,
   title={\badge{#1}\hspace{3mm}#2},
   titlerule=0.6mm, titlerule style={udark},
   boxrule=0.3mm, arc=3mm,
@@ -309,8 +311,7 @@ MAPPO falla por \emph{resistencia mayoría}; IPPO por \emph{carga} $\Rightarrow$
 \begin{tcolorbox}[enhanced, colback=utan, colframe=uborder, boxrule=0.3mm, arc=1.5mm,
   left=6mm, right=6mm, top=2mm, bottom=2mm]
 {\small\color{ink}
-\textbf{\color{udark}Referencias clave:} Stupp (2005); Gatenby \& Gallaher (2017); Stankova (2019); Pinto et al.\ RARL (2017); Gallagher (2024); Yu et al.\ MAPPO (2022); de Witt et al.\ IPPO (2020); GDSC2; DepMap.\hfill
-\textbf{\color{udark}GitHub:} GBMARL \quad \textbf{\color{udark}Correo:} klazo / gsegovia @utec.edu.pe}
+\textbf{\color{udark}Referencias clave:} Stupp (2005); Gatenby \& Gallaher (2017); Stankova (2019); Pinto et al.\ RARL (2017); Gallagher (2024); Yu et al.\ MAPPO (2022); de Witt et al.\ IPPO (2020); GDSC2; DepMap.}
 \end{tcolorbox}
 
 \end{frame}

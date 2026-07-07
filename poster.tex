@@ -160,7 +160,7 @@
 \end{softbox}
 \end{pblock}
 
-\vspace{15mm}
+\vspace{23mm}
 
 % --- 2. OBJETIVOS ---
 \begin{pblock}{2}{Objetivos}
@@ -176,7 +176,7 @@
 \end{enumerate}
 \end{pblock}
 
-\vspace{15mm}
+\vspace{23mm}
 
 % --- 3. METODOLOGIA ---
 \begin{pblock}{3}{Metodología --- el marco GBMARL}
@@ -204,7 +204,14 @@
 \bitem \textbf{Métrica honesta (TTP-combinado):} días hasta fallar \emph{control} de carga \textbf{o} \emph{tratable} (mayoría resistente), reportando el \textbf{modo de falla}.
 
 \vspace{2mm}
-\pfig{images/pipeline_diagram.png}{Pipeline reproducible: cada fase \emph{de-riskea} la siguiente --- los datos calibran, el simulador se prueba, PPO confirma que el entorno es aprendible antes de añadir el adversario.}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.49\textwidth}
+\pfig{images/pipeline_diagram.png}{Pipeline reproducible (\emph{inside-out}): cada fase de-riskea la siguiente.}
+\end{column}
+\begin{column}{0.49\textwidth}
+\pfig{images/dynamics_baseline.png}{Dinámica del simulador calibrado: poblaciones S/R según régimen de dosis.}
+\end{column}
+\end{columns}
 \end{pblock}
 
 \end{column}
